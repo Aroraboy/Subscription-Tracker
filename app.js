@@ -29,10 +29,15 @@ app.get('/', (req, res) => {
   res.send('Hello, Subscription Tracker!');
 });
 
-app.listen( PORT, async() => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+// Local development
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, async () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+    await connectToDatabase();
+  });
+}
 
-  await connectToDatabase();
-});
+// Initialize database connection for Vercel
+await connectToDatabase();
 
 export default app;
