@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "app.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "app.js"
+    }
+  ],
+  "env": {
+    "MONGODB_URI": "@mongodb_uri",
+    "JWT_SECRET": "@jwt_secret",
+    "ARCJET_KEY": "@arcjet_key",
+    "QSTASH_TOKEN": "@qstash_token",
+    "UPSTASH_WORKFLOW_URL": "@upstash_workflow_url"
+  }
+}
